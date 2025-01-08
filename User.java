@@ -75,6 +75,7 @@
         for (int j=0; j < fCount-1; j ++) {      
             this.follows[j] = follows[j+1];
         }
+            this.follows[fCount - 1] = null; //
             fCount--; 
             return true;
             }
