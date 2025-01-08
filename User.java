@@ -75,7 +75,7 @@
         return false;
         }
         for (int i = 0; i < follows.length; i ++) {
-            if (follows[i].equals(name)){
+            if (follows[i].equalsIgnoreCase(name)){
                index = i;
             }
         }
