@@ -29,15 +29,14 @@ public class Network {
      *  If there is no such user, returns null.
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
-
-        for (int i=0; i < users.length; i++) {
-            if (name.equals(users[i].getName())) {
-             return users[i];
+        for (int i = 0; i < users.length; i++) {
+            if (users[i] != null && name.equalsIgnoreCase(users[i].getName())) {
+                return users[i];
             }
         }
         return null;
     }
-
+    
     /** Adds a new user with the given name to this network.
     *  If ths network is full, does nothing and returns false;
     *  If the given name is already a user in this network, does nothing and returns false;
