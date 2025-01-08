@@ -77,8 +77,9 @@
         }
             fCount--; 
             return true;
-               }
+            }
        }
+       return false;
     }
 
     /** Counts the number of users that both this user and the other user follow.
