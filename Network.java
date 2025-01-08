@@ -55,7 +55,7 @@ public class Network {
     /** Makes the user with name1 follow the user with name2. If successful, returns true.
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
-    public boolean addFollowee(String name1, String name2) {
+/*    public boolean addFollowee(String name1, String name2) {
         User user1 = getUser(name1);
         User user2 = getUser(name2);
        if (user1 == null || user2 == null) {
@@ -68,8 +68,39 @@ public class Network {
         return true; 
     }
         return false;
+    }*/ 
+
+    /** Makes the user with name1 follow the user with name2. If successful, returns true.
+ *  If any of the two names is not a user in this network,
+ *  or if the "follows" addition failed for some reason, returns false. */
+public boolean addFollowee(String name1, String name2) {
+    // בדיקת פרמטרים null
+    if (name1 == null || name2 == null) {
+        return false;
     }
 
+    // משתמש לא יכול לעקוב אחרי עצמו
+    if (name1.equalsIgnoreCase(name2)) {
+        return false;
+    }
+
+    // השגת המשתמשים לפי שמם
+    User user1 = getUser(name1);
+    User user2 = getUser(name2);
+
+    // בדיקת קיום המשתמשים
+    if (user1 == null || user2 == null) {
+        return false;
+    }
+
+    // בדיקה אם המשתמש הגיע למספר המקסימלי של עוקבים
+    if (user1.getfCount() == User.maxfCount) {
+        return false; 
+    }
+
+    // הוספת עוקב
+    return user1.addFollowee(name2);
+}
     
     
     /** For the user with the given name, recommends another user to follow. The recommended user is
