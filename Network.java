@@ -50,7 +50,7 @@ public class Network {
             users[userCount] = new User(name);
             userCount++;
         }
-        return false;
+        return true;
     }
 
     /** Makes the user with name1 follow the user with name2. If successful, returns true.
@@ -70,6 +70,8 @@ public class Network {
     }
         return false;
     }
+
+    
     
     /** For the user with the given name, recommends another user to follow. The recommended user is
      *  the user that has the maximal mutual number of followees as the user with the given name. */
@@ -86,6 +88,9 @@ public class Network {
             max = users[i].countMutual(user1);
             }
         }    
+        if (maxmutual == null) {
+            return null;
+        }
         return maxmutual.getName();
     }
 
